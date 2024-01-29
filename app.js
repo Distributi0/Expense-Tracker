@@ -1,19 +1,27 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('#expense-form');
-  const expenseInput = document.querySelector('#expense-input');
-  const expenseList = document.querySelector('#expense-list');
+let totalExpenses = 0;
 
-  form.addEventListener('submit', addExpense);
+function addExpense() {
+  const expenseInput = document.getElementById('expense-input');
+  const categoryInput = document.getElementById('category-input');
+  const amountInput = document.getElementById('amount-input');
+  const expenseList = document.getElementById('expense-list');
+  const totalExpensesDisplay = document.getElementById('total-expenses');
 
-  function addExpense(event) {
-    event.preventDefault();
+  const expenseText = expenseInput.value.trim();
+  const categoryText = categoryInput.value.trim();
+  const amountValue = parseFloat(amountInput.value);
 
-    const expenseText = expenseInput.value.trim();
-    if (expenseText !== '') {
-      const expenseItem = document.createElement('li');
-      expenseItem.innerText = expenseText;
-      expenseList.appendChild(expenseItem);
-      expenseInput.value = '';
-    }
+  if (expenseText !== '' && !isNaN(amountValue) && amountValue > 0) {
+    const expenseItem = document.createElement('li');
+    expenseItem.innerHTML = `<strong>${expenseText}</strong> - ${categoryText} ($${amountValue.toFixed(2)})`;
+    expenseList.appendChild(expenseItem);
+
+    totalExpenses += amountValue;
+    totalExpensesDisplay.innerText = totalExpenses.toFixed(2);
+
+    // Clear input fields
+    expenseInput.value = '';
+    categoryInput.value = '';
+    amountInput.value = '';
   }
-});
+}
