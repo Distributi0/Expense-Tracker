@@ -19,7 +19,7 @@ function addExpense() {
     totalExpenses += amountValue;
     totalExpensesDisplay.innerText = totalExpenses.toFixed(2);
 
-    // Clear input fields
+  
     expenseInput.value = '';
     categoryInput.value = '';
     amountInput.value = '';
