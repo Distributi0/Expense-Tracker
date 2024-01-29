@@ -10,11 +10,19 @@
   <div class="container">
     <h1>Expense Tracker</h1>
     <form id="expense-form">
-      <label for="expense-input">Add Expense:</label>
+      <label for="expense-input">Expense:</label>
       <input type="text" id="expense-input" placeholder="Enter expense">
-      <button type="submit">Add</button>
+      
+      <label for="category-input">Category:</label>
+      <input type="text" id="category-input" placeholder="Enter category">
+
+      <label for="amount-input">Amount:</label>
+      <input type="number" id="amount-input" placeholder="Enter amount">
+
+      <button type="button" onclick="addExpense()">Add</button>
     </form>
     <ul id="expense-list"></ul>
+    <p>Total Expenses: $<span id="total-expenses">0.00</span></p>
   </div>
   <script src="app.js"></script>
 </body>
